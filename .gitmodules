@@ -1,0 +1,9 @@
+[submodule "bade"]
+	path = bade
+	url = git@github.com:bmcorser/bade
+[submodule "_bmcorser.github.io"]
+	path = _bmcorser.github.io
+	url = git@github.com:bmcorser/_bmcorser.github.io
+[submodule "bmcorser.github.io"]
+	path = bmcorser.github.io
+	url = git@github.com:bmcorser/bmcorser.github.io

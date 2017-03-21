@@ -1,0 +1,22 @@
+version: "2"
+services:
+  build:
+    build:
+      context: .
+      dockerfile: build
+    volumes_from:
+      - volumes
+  serve:
+    build:
+      context: .
+      dockerfile: serve
+    volumes_from:
+      - volumes
+    ports:
+      - 8000:8000
+  volumes:
+    image: busybox
+    volumes:
+      - ./_bmcorser.github.io:/source
+      - ./bmcorser.github.io:/build
+      - /tmp:/tmp

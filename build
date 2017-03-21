@@ -1,0 +1,22 @@
+FROM python:3.5
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV TERM dumb
+
+RUN apt-get update -q
+RUN apt-get install -qy texlive-full
+RUN apt-get install -qy python-pygments
+RUN apt-get install -qy gnuplot
+RUN apt-get install -qy graphviz
+
+RUN pip install peat
+
+ADD ./bade/requirements.txt /bade/requirements.txt
+RUN pip install -r /bade/requirements.txt
+RUN pip install -e git+https://github.com/bmcorser/bade.git@680a704#egg=bade
+
+WORKDIR /source
+CMD find . -name *.rst | peat -C bade
+ADD ./bade /bade
+RUN pip install -e /bade
+# CMD tail -f /dev/null
