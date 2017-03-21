@@ -1,0 +1,24 @@
+#! /bin/bash
+
+declare -a repos=(
+    bade
+    _bmcorser.github.io
+    bmcorser.github.io
+)
+
+commit=$(git rev-parse HEAD)
+
+for repo in "${repos[@]}"
+do
+    pushd $repo
+        git add .
+        git commit -m "Upstream commit at bmcorser/blog@$commit"
+    popd
+done
+
+for repo in "${repos[@]}"
+do
+    git add $repo
+done
+
+git commit
