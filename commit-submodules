@@ -11,8 +11,10 @@ commit=$(git rev-parse HEAD)
 for repo in "${repos[@]}"
 do
     pushd $repo
+        branch=$(git rev-parse --abbrev-ref HEAD)
         git add .
         git commit -m "Upstream commit at bmcorser/blog@$commit"
+        git push origin $branch:auto
     popd
 done
 
