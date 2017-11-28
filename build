@@ -13,10 +13,9 @@ RUN pip install peat
 
 ADD ./bade/requirements.txt /bade/requirements.txt
 RUN pip install -r /bade/requirements.txt
-RUN pip install -e git+https://github.com/bmcorser/bade.git@680a704#egg=bade
+ADD ./bade /bade
+RUN pip install -e /bade
 
 WORKDIR /source
 CMD find . -name *.rst | peat -C bade
-ADD ./bade /bade
-RUN pip install -e /bade
 # CMD tail -f /dev/null
