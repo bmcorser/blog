@@ -6,8 +6,6 @@ services:
       dockerfile: build
     volumes_from:
       - volumes
-    volumes:
-      - ./bade:/bade
   serve:
     build:
       context: .
@@ -19,6 +17,5 @@ services:
   volumes:
     image: busybox
     volumes:
-      - ./_bmcorser.github.io:/source
-      - ./bmcorser.github.io:/build
+      - .:/workdir
       - /tmp:/tmp

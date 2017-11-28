@@ -11,11 +11,11 @@ RUN apt-get install -qy graphviz
 
 RUN pip install peat
 
-ADD ./bade/requirements.txt /bade/requirements.txt
-RUN pip install -r /bade/requirements.txt
-ADD ./bade /bade
-RUN pip install -e /bade
+ADD ./bade/requirements.txt /workdir/bade/requirements.txt
+RUN pip install -r /workdir/bade/requirements.txt
+ADD ./bade /workdir/bade
+RUN pip install -e /workdir/bade
 
-WORKDIR /source
+WORKDIR /workdir/_bmcorser.github.io
 CMD find . -name *.rst | peat -C bade
 # CMD tail -f /dev/null

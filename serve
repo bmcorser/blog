@@ -1,3 +1,3 @@
 FROM python:3.5
-WORKDIR /build
+WORKDIR /workdir/bmcorser.github.io
 CMD python -m http.server
